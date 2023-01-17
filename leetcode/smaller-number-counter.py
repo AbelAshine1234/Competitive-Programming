@@ -1,12 +1,13 @@
-def smallerNumbersThanCurrent(nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        new_nums= [0]*len(nums)
-        for index, num in enumerate(nums):
-            for i in range(len(nums)):
-                if nums[index] > nums[i]:
-                    new_nums[index] += 1
-
-        return new_nums
+class Solution:
+    def smallerNumbersThanCurrent(self, nums):
+        l=len(nums)
+        ans=[]
+        count=0
+        for i in nums:
+            for j in range(l):
+               if (nums[j]-i)<0:
+                   count+=1
+            ans.append(count)
+            count=0
+        return ans
+    
