@@ -1,10 +1,15 @@
 class Solution(object):
     def maxArea(self, height):
-        max_container = 0
-        for p1 in range(len(height)):
-            for p2 in range(p1+1,len(height)):
-                heights = min(height[p1],height[p2])
-                width = p2 - p1
-                container = heights * width
-                max_container = max(max_container, container)
+        p1 = 0
+        p2 = len(height) -1
+        max_container= 0
+        while p1 < p2:
+            heights = min(height[p1],height[p2])
+            weight = p2 - p1 
+            container = heights*weight
+            max_container = max(max_container,container)
+            if height[p1] <= height[p2]:
+                p1 +=1
+            else:
+                p2 -=1
         return max_container
